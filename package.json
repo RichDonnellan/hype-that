@@ -1,0 +1,25 @@
+{
+  "name": "hype-that",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexjuneja1/hype-that.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexjuneja1/hype-that/issues"
+  },
+  "homepage": "https://github.com/alexjuneja1/hype-that#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "morgan": "^1.6.1",
+    "node-soundcloud": "0.0.4"
+  }
+}
