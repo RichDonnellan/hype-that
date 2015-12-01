@@ -6,6 +6,7 @@ var    express = require('express'),
            app = express(),
            ejs = require('ejs'),
     ejsLayouts = require('express-ejs-layouts'),
+          path = require('path'),
      apiRouter = express.Router()
 
 
@@ -13,7 +14,7 @@ app.use(logger('dev'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
-app.use(express.static('/public'))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/',function(req, res) {
   res.render('index')
