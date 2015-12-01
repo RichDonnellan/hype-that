@@ -24,10 +24,7 @@ app.use(express.static(__dirname + '/public'))
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 
-// set root route
-app.get('/',function(req, res) {
-  res.render('index')
-})
+
 
 // authentication for soundcloud
 SC.init({
@@ -36,6 +33,11 @@ SC.init({
   uri: configAuth.soundcloudAuth.uri,
   accessToken: configAuth.soundcloudAuth.accessToken
 });
+
+// set root route
+app.get('/',function(req, res) {
+  res.render('index')
+})
 
 // set routes for post request for /search
 app.post('/search',(function(req, res) { // when a post request is made to /search
