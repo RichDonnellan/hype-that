@@ -1,4 +1,4 @@
-<div class="main">
+
 	<!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +8,13 @@
 	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/cyborg/bootstrap.min.css">
 </head>
 <body>
-
+<div class="main">
 <!-- <img src="http://img03.deviantart.net/e237/i/2015/125/c/a/ghetto_sunset_by_urosh89-d1mn1u8.jpg"/> -->
 
   <h1>Hood Hypes</h1>
-  <!-- <%- body %> -->
+  <%- body %>
 	<br>
-	<button onclick="document.getElementById('Crickets').play()">Crickets</button>
+	<button onclick="document.getElementById('Crickets').pause();document.getElementById('Crickets').currentTime = 0; document.getElementById('Crickets').play()">Crickets</button>
 	<audio id="Crickets">
 	  <source src="/crickets.mp3">
 	</audio>
@@ -43,9 +43,10 @@
 	<audio id="really_nigga">
 	  <source src="/really_nigga.mp3">
 	</audio>
+</div>
 </body>
 </html>
-</div>
+
 
 <style>
 
