@@ -28,20 +28,21 @@ SC.init({
   accessToken: 'https://api.soundcloud.com/oauth2/token'
 });
 
-apiRouter.route('/search')
-  .get(function(req, res) {
-    sc.get('/tracks', {q: req.body.searchQuery}, function(err, track){
-      if (track) {
-        res.render('show', {track: track})
+app.post('/search',(function(req, res) {
+    SC.get('/tracks', {q: req.body.search}, function(err, tracks){
+      if (err) {
+        console.log(err)
+        res.render('index')
       }
       else {
-        console.log('failure')
-        res.render('/')
+        var random = Math.floor((Math.random() * tracks.length))
+        var track = tracks[random]
+                console.log(track)
+        res.render('show', {tracks: tracks, track: track})
       }
     })
+  }))
 
-
-  })
 
 
 app.listen(port)
