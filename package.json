@@ -26,5 +26,8 @@
     "morgan": "^1.6.1",
     "node-soundcloud": "0.0.4",
     "path": "^0.12.7"
-  }
+  },
+ "engines": {
+   "node": "4.1.1"
+ }
 }
