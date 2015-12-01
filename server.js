@@ -1,3 +1,4 @@
+// require modules needed
 var    express = require('express'),
     bodyParser = require('body-parser'),
         logger = require('morgan'),
@@ -7,42 +8,51 @@ var    express = require('express'),
            ejs = require('ejs'),
     ejsLayouts = require('express-ejs-layouts'),
           path = require('path'),
+    configAuth = require('./config/auth.js'),
      apiRouter = express.Router()
 
-
+// middleware
 app.use(logger('dev'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 app.use(express.static(path.join(__dirname, 'public')))
+// make files inside public accessible
+app.use(express.static(__dirname + '/public'))
 
+// use ejs and express-ejs-layouts
+app.set('view engine', 'ejs')
+app.use(ejsLayouts)
+
+// set root route
 app.get('/',function(req, res) {
   res.render('index')
 })
 
-app.set('view engine', 'ejs')
-
+// authentication for soundcloud
 SC.init({
-  id: 'b0d75d37539752ace8011cf07b7e02c1',
-  secret: '5233e48846667dc6da21735d9490b308',
-  uri: 'http://localhost:3000/',
-  accessToken: 'https://api.soundcloud.com/oauth2/token'
+  id: configAuth.soundcloudAuth.id,
+  secret: configAuth.soundcloudAuth.secret,
+  uri: configAuth.soundcloudAuth.uri,
+  accessToken: configAuth.soundcloudAuth.accessToken
 });
 
-apiRouter.route('/search')
-  .get(function(req, res) {
-    sc.get('/tracks', {q: req.body.searchQuery}, function(err, track){
-      if (track) {
-        res.render('show', {track: track})
-      }
-      else {
-        console.log('failure')
-        res.render('/')
-      }
-    })
-
-
+// set routes for post request for /search
+app.post('/search',(function(req, res) { // when a post request is made to /search
+  // make a get request to soundcloud using the input value of "search"
+  SC.get('/tracks', {q: req.body.search}, function(err, tracks){
+    if (err) { // if err, then direct user to index to fill out the form again
+      console.log(err)
+      res.render('index')
+    } else {
+      // if soundcloud returns results, then randomly pick one out of the 10
+      var random = Math.floor((Math.random() * tracks.length))
+      var track = tracks[random]
+      // render show page to play the selected track
+      res.render('show', {tracks: tracks, track: track})
+    }
   })
+}))
 
-
+// create server
 app.listen(port)
