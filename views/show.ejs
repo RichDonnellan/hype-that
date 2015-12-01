@@ -1,4 +1,5 @@
-<p><%= track.title %></p>
-<p><%= track.id %></p>
-<p><%= track.stream_url %></p>
-<p><%= track.uri %></p>
+<!-- iframe to hold embedded player for the selected track-->
+<iframe width="60%" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<%= track.id %>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe><br>
+
+<!-- back button to go back to home page -->
+<a href="/"><button>Back</button></a>

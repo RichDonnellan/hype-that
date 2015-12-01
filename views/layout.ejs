@@ -1,0 +1,69 @@
+
+	<!DOCTYPE html>
+<html>
+<head>
+	<title>Hood Hypes</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/cyborg/bootstrap.min.css">
+</head>
+<body>
+<div class="main">
+<!-- <img src="http://img03.deviantart.net/e237/i/2015/125/c/a/ghetto_sunset_by_urosh89-d1mn1u8.jpg"/> -->
+
+  <h1>Hood Hypes</h1>
+  <%- body %>
+	<br>
+	<button onclick="document.getElementById('Crickets').pause();document.getElementById('Crickets').currentTime = 0; document.getElementById('Crickets').play()">Crickets</button>
+	<audio id="Crickets">
+	  <source src="/crickets.mp3">
+	</audio>
+
+	<button onclick="document.getElementById('air_horn').play()">Air Horn</button>
+	<audio id="air_horn">
+	  <source src="/air_horn.mp3">
+	</audio>
+
+	<button onclick="document.getElementById('shotgun').play()">Shotgun</button>
+	<audio id="shotgun">
+	  <source src="/shotgun.mp3">
+	</audio>
+
+	<button onclick="document.getElementById('deez_nuts').play()">Deez Nuts</button>
+	<audio id="deez_nuts">
+	  <source src="/deez_nuts.mp3">
+	</audio>
+
+	<button onclick="document.getElementById('whatcha_say').play()">Whatcha Say</button>
+	<audio id="whatcha_say">
+	  <source src="/whatcha_say.mp3">
+	</audio>
+
+	<button onclick="document.getElementById('really_nigga').play()">Really Nigga</button>
+	<audio id="really_nigga">
+	  <source src="/really_nigga.mp3">
+	</audio>
+</div>
+</body>
+</html>
+
+
+<style>
+
+	body {
+		background-image: url("http://i66.tinypic.com/54vhfs.jpg");
+		background-repeat: no-repeat;
+		background-position: top;center;
+	}
+
+	.main {
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	h1 {
+		font-family: Old English Text MT;
+	}
+
+
+</style>
